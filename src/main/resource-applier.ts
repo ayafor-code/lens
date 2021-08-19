@@ -64,7 +64,7 @@ export class ResourceApplier {
       "-f", fileName,
     ];
 
-    logger.debug(`[RESOURCE-APPLIER]: shooting manifests with: ${kubectlPath}`, args);
+    logger.debug(`[RESOURCE-APPLIER]: shooting manifests with: ${kubectlPath}`, { args });
 
     const execEnv: NodeJS.ProcessEnv = Object.assign({}, process.env);
     const httpsProxy = this.cluster.preferences?.httpsProxy;
@@ -107,7 +107,7 @@ export class ResourceApplier {
       "--kubeconfig", proxyKubeconfigPath,
     );
 
-    logger.info(`[RESOURCE-APPLIER] running cmd: ${kubectlPath}`, args);
+    logger.info(`[RESOURCE-APPLIER] Executing ${kubectlPath}`, { args });
 
     try {
       const { stdout } = await promiseExecFile(kubectlPath, args);
