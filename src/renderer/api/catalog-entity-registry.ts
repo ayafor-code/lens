@@ -123,7 +123,7 @@ export class CatalogEntityRegistry {
       iter.reduce(
         this.filters,
         iter.filter,
-        this.items,
+        this.items.values(),
       )
     );
   }
